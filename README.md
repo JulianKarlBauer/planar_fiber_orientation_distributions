@@ -4,13 +4,13 @@
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/JulianKarlBauer/planar_fiber_orientation_tensors_2021/HEAD)
 
-<p float="left">
-  <h1>PlanarFibers   </h1>
+<p align="center">
   <a href="https://github.com/JulianKarlBauer/planar_fiber_orientation_tensors_2021">
-  <img alt="PlanarFibers" src="logo/logo.png" width="25%">
+  <img alt="PlanarFibers" src="logo/logo.png" width="35%">
   </a>
 </p>
 
+# PlanarFibers
 
 This repository contains a Python package called `planarfibers`  
 which contains selected contributions of the paper
