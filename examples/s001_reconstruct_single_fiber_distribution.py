@@ -28,4 +28,5 @@ fig, axs = plt.subplots(
 )
 ax = axs
 ax.plot(angles, values, label="reconstructed fodf")
-plt.show()
+# # plt.show()
+
