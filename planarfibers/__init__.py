@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from . import reconstruction
-# from . import discretization
+from . import discretization
 # from . import visualization
 
 
