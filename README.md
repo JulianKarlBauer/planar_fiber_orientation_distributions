@@ -25,7 +25,7 @@ which contains selected contributions of the paper
 
 Please see [license][url_license],
 [acknowledgment](#acknowledgment)
-and cite the [paper given above][url_mms_article] and the latest [Zenodo-DOI][latest_doi].
+and cite the [paper given above][url_mms_article] and the latest [Zenodo-DOI][url_latest_doi].
 
 ## Installation
 
@@ -50,8 +50,9 @@ The support by the [German Research Foundation (DFG)][dfg_website] is gratefully
 
 [grk_website]: https://www.grk2078.kit.edu/
 [dfg_website]: https://www.dfg.de/
+
 [url_license]: LICENSE
-[latest_doi]: ??
+[url_latest_doi]: ??
 [url_mms_article]: ??
 [url_how_to_clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
