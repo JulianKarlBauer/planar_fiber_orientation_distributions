@@ -17,6 +17,7 @@ setuptools.setup(
         "numpy",
         # "sympy",
         # "pandas",  # Required for example s003...
+        'vofotensors @ git+ssh://git@github.com/JulianKarlBauer/fiber_orientation_tensors_2021@v1.0.0#egg=vofotensors'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -31,12 +31,13 @@ and cite the [paper given above][url_mms_article] and the latest [Zenodo-DOI][ur
 
 - [Clone][url_how_to_clone] this repository to your machine
 - Open a terminal and navigate to your local clone
-- Install the package from the local clone into the current [env][url_env_python]i[ronment][url_env_conda] in develop mode:
+- Install the package from the local clone into the current [env][url_env_python]i[ronment][url_env_conda] in editable/development mode with pip:
 	```shell
-	python setup.py develop
+	pip install -e .
 	```
 
 Note: [Develop vs. install](https://stackoverflow.com/a/19048754/8935243)
+Note: As the required package `vofotensors` is not on [PyPI][url_pypi] and has to be downloaded and installed directly from Github, installation with `python setup.py develop` does [not work][url_install_from_github].
 
 ## Examples
 
@@ -58,3 +59,6 @@ The support by the [German Research Foundation (DFG)][dfg_website] is gratefully
 
 [url_env_python]: https://docs.python.org/3/tutorial/venv.html
 [url_env_conda]: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+
+[url_pypi]: https://pypi.org/
+[url_install_from_github]: https://github.com/facebookresearch/Detectron/issues/963#issuecomment-552169878
