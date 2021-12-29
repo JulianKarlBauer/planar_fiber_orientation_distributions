@@ -17,6 +17,7 @@ setuptools.setup(
         "numpy",
         "scipy",
         "sympy",
+        "pandas",
         "matplotlib",  # Required for examples
     ],
     classifiers=[
