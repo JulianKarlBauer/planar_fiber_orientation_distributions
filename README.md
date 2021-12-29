@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/JulianKarlBauer/planar_fiber_orientation_tensors_2021">
-  <img alt="PlanarFibers" src="logo/logo.png" width="35%">
+  <img alt="PlanarFibers" src="logo/logo.png" width="20%">
   </a>
 </p>
 
