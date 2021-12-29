@@ -16,6 +16,7 @@ setuptools.setup(
     install_requires=[
         "numpy",
         "scipy",
+        "sympy",
         "matplotlib",  # Required for examples
     ],
     classifiers=[
