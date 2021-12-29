@@ -15,8 +15,8 @@ setuptools.setup(
     package_dir={"planarfibers": "planarfibers"},
     install_requires=[
         "numpy",
-        # "sympy",
-        # "pandas",  # Required for example s003...
+        "scipy",
+        "matplotlib",  # Required for examples
         'vofotensors @ git+ssh://git@github.com/JulianKarlBauer/fiber_orientation_tensors_2021@v1.0.0#egg=vofotensors'
     ],
     classifiers=[
