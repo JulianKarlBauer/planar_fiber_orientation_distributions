@@ -17,7 +17,6 @@ setuptools.setup(
         "numpy",
         "scipy",
         "matplotlib",  # Required for examples
-        'vofotensors @ git+ssh://git@github.com/JulianKarlBauer/fiber_orientation_tensors_2021@v1.0.0#egg=vofotensors'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
