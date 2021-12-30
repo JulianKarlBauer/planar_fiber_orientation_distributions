@@ -8,7 +8,7 @@ setuptools.setup(
     description="PlanarFibers "
     "contains selected contributions of "
     "Bauer JK, Böhlke T. ?? "
-    "Mathematics and Mechanics of Solids. January? 2022?. "
+    "Mathematics and Mechanics of Solids. Month? YYYY?. "
     "doi:??",
     url="https://github.com/JulianKarlBauer/planar_fiber_orientation_tensors_2021",
     packages=["planarfibers"],
