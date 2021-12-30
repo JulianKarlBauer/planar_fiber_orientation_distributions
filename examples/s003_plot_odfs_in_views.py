@@ -4,17 +4,14 @@
 This is a demonstration script with naiv optimization.
 Results of this script are not used in the corresponding paper
 """
-
 import planarfibers
-
 import matplotlib.pyplot as plt
-import os
 import pandas as pd
 
 pd.set_option("display.max_columns", 100)
 pd.set_option("display.width", 1000)
-
 SCALE_HOMOGENEOUS = True
+ORDER = 720
 
 ############################################
 # Get points on views
@@ -24,10 +21,9 @@ df = planarfibers.discretization.get_points_on_slices(
     la0s=["1/2", "4/6", "5/6", "1"],
     numeric=True,
 )
+
 ############################################
 # Get odfs
-
-ORDER = 720
 
 df["lagrange_multipliers"] = df.apply(
     lambda row: planarfibers.reconstruction.get_reconstructed_fodf_planar_fast(
@@ -50,7 +46,6 @@ angles = planarfibers.reconstruction.IntegrationSchemeCircle(order=ORDER).angles
 # Get discrete odf values
 
 problem = planarfibers.reconstruction.ReconstructionProblemPlanar2DFast()
-
 df["odf_values"] = df.apply(
     lambda row: problem.odf(*row["lagrange_multipliers"], angles),
     axis=1,
@@ -64,7 +59,6 @@ la0_key_extensions = {
     "-la0-1": "4 / 6",
     "-la0-2": "5 / 6",
 }
-
 grid_indices = {
     "vshc-central": (2, 0),
     "vshc-m90-0": (3, 0),
@@ -78,19 +72,17 @@ grid_indices = {
     "vshc-90-0": (1, 0),
     "vshc-90-1": (0, 0),
 }
-
 legend_axis_indices = (4, 1)
-
 remaining_axes_indices = [(0, 1), (1, 2), (3, 2), legend_axis_indices]
 
 ################################################
-
-for key_extension, la0val in la0_key_extensions.items():
-
-    fig, axs = plt.subplots(
-        figsize=(9, 15), ncols=3, nrows=5, subplot_kw={"projection": "polar"}
-    )
-
+nbr_slices = len(la0_key_extensions)
+fig = plt.figure(figsize=(6 * nbr_slices, 10))
+subfigs = fig.subfigures(1, nbr_slices, wspace=0.0)
+for index, (key_extension, la0val) in enumerate(la0_key_extensions.items()):
+    subfig = subfigs[index]
+    subfig.suptitle(f"la0 = {la0val}")
+    axs = subfig.subplots(ncols=3, nrows=5, subplot_kw={"projection": "polar"})
     lines = []  # Initialize legend lines
     for key_N4_start, grid_index in grid_indices.items():
         ax = axs[grid_index]
@@ -118,12 +110,10 @@ for key_extension, la0val in la0_key_extensions.items():
     for indice in remaining_axes_indices:
         ax = axs[indice]
         ax.axis("off")
-
-    fig.tight_layout()
-
+fig.tight_layout()
 
 ################################################
-# Layout view00
+# Layout view on orthotropic points
 
 grid_indices = {
     "v00-upper-0": (0, 0),
@@ -140,9 +130,7 @@ grid_indices = {
     "ud": (2, 3),
     #
 }
-
 legend_axis_indices = (0, 3)
-
 remaining_axes_indices = [(1, 3), legend_axis_indices]
 
 ################################################
@@ -150,7 +138,6 @@ remaining_axes_indices = [(1, 3), legend_axis_indices]
 fig, axs = plt.subplots(
     figsize=(12, 9), ncols=4, nrows=3, subplot_kw={"projection": "polar"}
 )
-
 lines = []  # Initialize legend lines
 for key_N4_start, grid_index in grid_indices.items():
     ax = axs[grid_index]
@@ -162,7 +149,6 @@ for key_N4_start, grid_index in grid_indices.items():
     lines_tmp, labels_tmp = ax.get_legend_handles_labels()
     if len(lines_tmp) > len(lines):
         lines, labels = lines_tmp, labels_tmp
-
 for ax in axs.flatten():
     ax.set_xticklabels([])
     if SCALE_HOMOGENEOUS:
@@ -171,14 +157,11 @@ for ax in axs.flatten():
             top=1.2,
         )
         ax.set_yticks([0, 0.5, 1])
-
 legend_axis = axs[legend_axis_indices]
 legend_axis.legend(lines, labels, loc="center")
-
 for indice in remaining_axes_indices:
     ax = axs[indice]
     ax.axis("off")
-
 fig.tight_layout()
 
-# plt.show()
+# # plt.show()
