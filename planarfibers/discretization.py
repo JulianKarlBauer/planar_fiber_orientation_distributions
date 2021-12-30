@@ -164,6 +164,3 @@ def get_points_on_slices(
     if numeric:
         return df.applymap(lambda x: float(sp.N(x)))
     return df
-
-
-df = get_points_on_slices(radii=["0", "9/10"], la0s=["1"])
