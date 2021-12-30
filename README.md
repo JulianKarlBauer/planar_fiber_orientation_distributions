@@ -18,7 +18,7 @@ which contains selected contributions of the paper
 ```bibtex
 @article{insertdoihere,
 	author = {Julian Karl Bauer and Thomas Böhlke},
-	title ={Fiber Orientation Distributions Based on Planar Fiber Orientation Tensors of Fourth Order},
+	title ={Fiber orientation distributions based on planar fiber orientation tensors of fourth order},
 	journal = {Mathematics and Mechanics of Solids},
 }
 ```
