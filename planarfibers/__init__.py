@@ -3,6 +3,5 @@
 
 from . import reconstruction
 from . import discretization
-# from . import visualization
 
 
