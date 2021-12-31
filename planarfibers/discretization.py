@@ -4,7 +4,7 @@ import sympy as sp
 import pandas as pd
 
 two = sp.S(2)
-z = sp.S(0)
+zero = sp.S(0)
 base = sp.sympify("-4 / 35")
 pi = sp.pi
 
@@ -42,7 +42,7 @@ def beta_by_la0_d0_d7(la0, d0, d7):
 
 def points_view00(la0s, radius_almost):
     angle_upper = pi / two
-    angle_mid = z
+    angle_mid = zero
     angle_lower = -pi / two
 
     one_is_on_board = sp.S(1) in la0s
@@ -62,7 +62,7 @@ def points_view00(la0s, radius_almost):
         **{
             f"v00-mid-{index}": {
                 "la0": la0s[index],
-                "radius_factor": z,
+                "radius_factor": zero,
                 "beta": angle_mid,
             }
             for index in range(nbr_la0s)
@@ -79,8 +79,8 @@ def points_view00(la0s, radius_almost):
     if one_is_on_board:
         tmp["ud"] = {
             "la0": la0s[-1],
-            "radius_factor": z,
-            "beta": z,
+            "radius_factor": zero,
+            "beta": zero,
         }
     return tmp
 
@@ -89,8 +89,8 @@ def points_view_shaped_half_circle(la0, angles, angles_names, radii, key_extensi
     points = {
         "vshc-central": {
             "la0": la0,
-            "radius_factor": z,
-            "beta": z,
+            "radius_factor": zero,
+            "beta": zero,
         },
         **{
             f"vshc-{angles_names[index_angle]}-{index_radius}": {
