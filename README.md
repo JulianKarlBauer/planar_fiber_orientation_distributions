@@ -5,7 +5,7 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/JulianKarlBauer/planar_fiber_orientation_distributions/HEAD)
 
 <p align="center">
-  <a href="https://github.com/JulianKarlBauer/planar_fiber_orientation_tensors_2021">
+  <a href="https://github.com/JulianKarlBauer/planar_fiber_orientation_distributions">
   <img alt="PlanarFibers" src="logo/logo.png" width="20%">
   </a>
 </p>
