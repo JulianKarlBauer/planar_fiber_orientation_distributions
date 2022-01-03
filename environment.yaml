@@ -1,4 +1,4 @@
-name: planarfibers
+name: planarfiberdist
 channels:
   - conda-forge
   - defaults
@@ -93,4 +93,4 @@ dependencies:
   - zstd=1.4.9=ha95c52a_0
   - pip:
     - p2j==1.3.2
-prefix: /home/julian/miniconda3/envs/planarfibers
+prefix: /home/julian/miniconda3/envs/planarfiberdist

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from planarfibers import discretization
+from planarfiberdist import discretization
 
 
 class Test_execute_without_error:

@@ -4,7 +4,7 @@
 This is a demonstration script with naiv optimization.
 Results of this script are not used in the corresponding paper
 """
-import planarfibers
+import planarfiberdist
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -16,7 +16,7 @@ ORDER = 720
 ############################################
 # Get points on views
 
-df = planarfibers.discretization.get_points_on_slices(
+df = planarfiberdist.discretization.get_points_on_slices(
     radii=["0", "1/2", "9/10"],
     la0s=["1/2", "4/6", "5/6", "1"],
     numeric=True,
@@ -26,7 +26,7 @@ df = planarfibers.discretization.get_points_on_slices(
 # Get odfs
 
 df["lagrange_multipliers"] = df.apply(
-    lambda row: planarfibers.reconstruction.get_reconstructed_fodf_planar_fast(
+    lambda row: planarfiberdist.reconstruction.get_reconstructed_fodf_planar_fast(
         la0=row["la0"],
         d0=row["d_0"],
         d7=row["d_7"],
@@ -40,12 +40,12 @@ df["lagrange_multipliers"] = df.apply(
 ################################################
 # Define angle discretization
 
-angles = planarfibers.reconstruction.IntegrationSchemeCircle(order=ORDER).angles
+angles = planarfiberdist.reconstruction.IntegrationSchemeCircle(order=ORDER).angles
 
 ################################################
 # Get discrete odf values
 
-problem = planarfibers.reconstruction.ReconstructionProblemPlanar2DFast()
+problem = planarfiberdist.reconstruction.ReconstructionProblemPlanar2DFast()
 df["odf_values"] = df.apply(
     lambda row: problem.odf(*row["lagrange_multipliers"], angles),
     axis=1,

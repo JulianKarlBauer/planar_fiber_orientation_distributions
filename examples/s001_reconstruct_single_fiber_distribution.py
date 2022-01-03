@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import planarfibers
+import planarfiberdist
 import matplotlib.pyplot as plt
 
 order = 720
 
 #############
 # Get Reconstruction
-reconstruction = planarfibers.reconstruction.get_reconstructed_fodf_planar_fast(
+reconstruction = planarfiberdist.reconstruction.get_reconstructed_fodf_planar_fast(
     la0=2 / 3, d0=-1 / 315, d7=1 / 18, order=order, solver_kwargs=None, tolerance=1e-9
 )
 
@@ -18,8 +18,8 @@ lagrange_multipliers = reconstruction.x
 #############
 # Plot Reconstruction
 
-angles = planarfibers.reconstruction.IntegrationSchemeCircle(order=order).angles
-values = planarfibers.reconstruction.ReconstructionProblemPlanar2DFast().odf(
+angles = planarfiberdist.reconstruction.IntegrationSchemeCircle(order=order).angles
+values = planarfiberdist.reconstruction.ReconstructionProblemPlanar2DFast().odf(
     *lagrange_multipliers, angles
 )
 

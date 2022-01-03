@@ -6,13 +6,13 @@
 
 <p align="center">
   <a href="https://github.com/JulianKarlBauer/planar_fiber_orientation_distributions">
-  <img alt="PlanarFibers" src="logo/logo.png" width="20%">
+  <img alt="PlanarFiberDist" src="logo/logo.png" width="20%">
   </a>
 </p>
 
-# PlanarFibers
+# PlanarFiberDist
 
-This repository contains a Python package called `planarfibers`  
+This repository contains a Python package called `planarfiberdist`  
 which contains selected contributions of the paper
 
 ```bibtex
