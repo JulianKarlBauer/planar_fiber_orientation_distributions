@@ -25,10 +25,16 @@ which contains selected contributions of the paper
 
 Please see [license][url_license],
 [acknowledgment](#acknowledgment)
-and cite the [paper given above][url_mms_article] and the latest [Zenodo-DOI][url_latest_doi].
+and cite the [paper given above][url_article] and the latest [Zenodo-DOI][url_latest_doi].
 
 ## Installation
 
+### Install directly from github
+```
+python -m pip install git+https://github.com/JulianKarlBauer/planar_fiber_orientation_distributions.git
+```
+
+### Install from local clone
 - [Clone][url_how_to_clone] this repository to your machine
 - Open a terminal and navigate to your local clone
 - Install the package from the local clone into the current [env][url_env_python]i[ronment][url_env_conda] in develop mode:
@@ -40,20 +46,23 @@ Note: [Develop vs. install](https://stackoverflow.com/a/19048754/8935243)
 
 ## Examples
 
-Both example notebooks and example scripts are given [here](examples/).
+Rendered example notebooks and example scripts are given [here](examples/).
 
 ## Acknowledgment
 
-The research documented in this repository has been funded by the German Research Foundation (DFG) within the
-International Research Training Group [“Integrated engineering of continuous-discontinuous long fiber reinforced polymer structures“ (GRK 2078)][grk_website].
-The support by the [German Research Foundation (DFG)][dfg_website] is gratefully acknowledged.
+The research documented in this repository has been funded by the
+[German Research Foundation (DFG, Deutsche Forschungsgemeinschaft)][dfg_website] - project number [255730231][dfg_project].
+The support by the German Research Foundation within the International Research Training Group
+[“Integrated engineering of continuous-discontinuous long fiber reinforced polymer structures“ (GRK 2078)][grk_website]
+is gratefully acknowledged.
 
 [grk_website]: https://www.grk2078.kit.edu/
 [dfg_website]: https://www.dfg.de/
+[dfg_project]: https://gepris.dfg.de/gepris/projekt/255730231
 
 [url_license]: LICENSE
 [url_latest_doi]: ??
-[url_mms_article]: ??
+[url_article]: ??
 [url_how_to_clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
 [url_env_python]: https://docs.python.org/3/tutorial/venv.html
