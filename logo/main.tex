@@ -1,0 +1,231 @@
+\documentclass[tikz, border=1mm]{standalone}
+% \usepackage[mode=buildnew]{standalone}% requires -shell-escape
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta,decorations.markings}
+\usepgfplotslibrary{fillbetween}
+
+\tikzset{myarrowhead/.style={decoration={markings,mark=at position 1 with %
+{\arrow[scale=1.,>={Triangle[length=8pt, width=7pt]}]{>}}},postaction={decorate}}}
+
+\DeclareUnicodeCharacter{2212}{−}
+\usepgfplotslibrary{groupplots,dateplot}
+\usepgfplotslibrary{polar}
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns,shapes.arrows}
+\pgfplotsset{compat=newest}
+
+% Font
+\usepackage{arev}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pgfmathsetmacro{\marksize}{3}
+\pgfmathsetmacro{\mylinewidth}{1.5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\pgfmathsetmacro{\base}{-4.0/35.0}
+\pgfmathsetmacro{\costoonehalfofheight}{0.86602540378443864676372317075}
+\tikzset{declare function={upperboundofd1(\la)=-4/35+\la-\la^2;}}
+\tikzset{declare function={radiusadmissible(\la)=(upperboundofd1(\la)-\base)/2;}}
+\tikzset{declare function={upperboundofd1points(\la)=-4/35+(1+9/10)/2*(\la-\la^2);}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\pgfplotsset{
+	pointsinoverviews/.style={%
+			thick, mark=*, mark size=3, mark options={solid}, only marks,
+		}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\colorlet{ctop}{green}
+\colorlet{ccenter}{blue}
+\colorlet{cbottom}{red}
+
+\begin{tikzpicture}
+	\begin{axis}[
+		width=0.9\linewidth,
+		view={12}{10},
+		hide axis,
+		xmin=0.5, xmax=1.05,
+		ymin=0, ymax=0.15,
+		zmin=-0.115, zmax=0.15,
+		y dir=reverse,
+		]
+
+		% ###########################
+		% Orthotropic plane admissible with colored boundaries
+
+		\addplot3[black!60!white, name path = upper, domain=1/2:1, y domain = 0:0,
+ 				line width=1.pt]
+		(
+		{x},
+		{0},
+		{upperboundofd1(x)}
+		);
+
+		\addplot3 [black!60!white, name path = lower, domain=1/2:1, y domain = 0:0, line width=1.pt]
+		(
+		{x},
+		{0},
+		{\base}
+		);
+
+		% Paths
+		\addplot3[ctop, domain=1/2:5/6, y domain = 0:0,
+ 				line width=1.pt]
+		(
+		{x},
+		{0},
+		{upperboundofd1points(x)}
+		);
+
+		\addplot3 [cbottom, domain=1/2:5/6, y domain = 0:0, line width=1.pt]
+		(
+		{x},
+		{0},
+		{\base*(9/10)}
+		);
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% Vertical lines
+
+		\addplot3 [black!60!white,
+ 			mark=none,
+			domain=\base/10*9:upperboundofd1points(3/6)),
+			samples=60,samples y=0,
+			line width=\mylinewidth,
+			name path = zerothvertical
+		]
+		(
+		{1/2},
+		{0},
+		{x}
+		);
+
+		\addplot3 [black!60!white, mark=none,
+			domain=\base:upperboundofd1(4/6)),
+			samples=60,samples y=0,
+			line width=\mylinewidth
+		]
+		(
+		{4/6},
+		{0},
+		{x}
+		);
+
+		\addplot3 [black!60!white, mark=none,
+			domain=\base:upperboundofd1(5/6)),
+			samples=60,samples y=0,
+			line width=\mylinewidth
+		]
+		(
+		{5/6},
+		{0},
+		{x}
+		);
+
+
+		% ###########################
+		% Middle between upper and lower
+
+		\addplot3[ccenter,
+ 				domain=1/2:1, y domain = 0:0,
+ 				line width=\mylinewidth]
+		(
+		{x},
+		{0},
+		{\base + radiusadmissible(x)}
+		);
+
+
+		% ###########################
+		% Half circles admissible
+
+		\addplot3 [black!60!white, name path = zerothcircle, mark=none, domain=0:180,samples=60, samples y=0, line width=\mylinewidth]
+		(
+		{1/2},
+		{radiusadmissible(1/2)*sin(x)},
+		{\base + radiusadmissible(1/2) + radiusadmissible(1/2)*cos(x)}
+		);
+
+		\addplot3 [black!60!white, mark=none, domain=0:180,samples=60, samples y=0, line width=\mylinewidth]
+		(
+		{4/6},
+		{radiusadmissible(4/6)*sin(x)},
+		{\base + radiusadmissible(4/6) + radiusadmissible(4/6)*cos(x)}
+		);
+
+		\addplot3 [black!60!white, mark=none, domain=0:180,samples=60, samples y=0, line width=\mylinewidth]
+		(
+		{5/6},
+		{radiusadmissible(5/6)*sin(x)},
+		{\base + radiusadmissible(5/6) + radiusadmissible(5/6)*cos(x)}
+		);
+
+		% ###########################
+		% Fill
+
+		% between zeroth circle and z-axis
+		\addplot [black, opacity= 0.4, draw = none]
+		fill between[of = zerothvertical and zerothcircle, reverse = true];
+
+		\addplot [black, opacity = 0.4, draw = none]
+		fill between[of = upper and lower, reverse = true];
+
+
+		% ###########################
+		% Points
+
+		% middle
+		\addplot3[ccenter,
+				pointsinoverviews,
+				domain=1/2:1,
+				samples=4
+				]
+		(
+		{x},
+		{0},
+		{\base + radiusadmissible(x)}
+		);
+
+		% top
+		\addplot3[ctop,
+				pointsinoverviews,
+				domain=1/2:5/6,
+				samples=3
+				]
+		(
+		{x},
+		{0},
+		{upperboundofd1points(x)}
+		);
+
+		% bottom
+		\addplot3 [cbottom,
+				pointsinoverviews,
+				domain=1/2:5/6,
+				samples=3
+				]
+		(
+		{x},
+		{0},
+		{\base*(9/10)}
+		);
+
+
+
+	\end{axis}
+\end{tikzpicture}
+
+
+
+\end{document}
