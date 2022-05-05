@@ -7,9 +7,9 @@ setuptools.setup(
     author_email="juliankarlbauer@gmx.de",
     description="PlanarFiberDist "
     "contains selected contributions of "
-    "Bauer JK, Böhlke T. ?? "
-    "Mathematics and Mechanics of Solids. Month? YYYY?. "
-    "doi:??",
+    "Bauer JK, Böhlke T. "
+    "Mathematics and Mechanics of Solids. ????. "
+    "doi:????",
     url="https://github.com/JulianKarlBauer/planar_fiber_orientation_tensors_2021",
     packages=["planarfiberdist"],
     package_dir={"planarfiberdist": "planarfiberdist"},
