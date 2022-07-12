@@ -16,10 +16,12 @@ This repository contains a Python package called `planarfiberdist`
 which contains selected contributions of the paper
 
 ```bibtex
-@article{insertdoihere,
+@article{BauerBoehlke2022,
 	author = {Julian Karl Bauer and Thomas Böhlke},
 	title ={Fiber orientation distributions based on planar fiber orientation tensors of fourth order},
 	journal = {Mathematics and Mechanics of Solids},
+	doi = {10.1177/10812865221093958},
+	year={2022},
 }
 ```
 
